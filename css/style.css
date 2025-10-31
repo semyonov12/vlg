@@ -1345,7 +1345,7 @@ body::after {
 
 .vlg-hero__image {
   position: relative;
-  height: 573px;
+  aspect-ratio: 360/573;
   border: 1px solid #c0342b;
   border-top: none;
   background: #000;
@@ -1576,6 +1576,7 @@ body::after {
   padding-top: 22px;
   position: relative;
   padding-bottom: 12px;
+  overflow: hidden;
 }
 
 .vlg-menu::before {
@@ -1590,7 +1591,7 @@ body::after {
 
 .vlg-menu__background {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   width: 100%;
   left: 0;
 }
@@ -1605,6 +1606,8 @@ body::after {
   display: flex;
   gap: 72px;
   margin-bottom: 85px;
+  position: relative;
+  z-index: 2;
 }
 
 .vlg-menu__desc {
@@ -1670,6 +1673,11 @@ body::after {
   -webkit-transform: translate(0, 2px);
       -ms-transform: translate(0, 2px);
           transform: translate(0, 2px);
+}
+
+.vlg-menu__block {
+  position: relative;
+  z-index: 2;
 }
 
 .vlg-menu__title {
@@ -1893,8 +1901,8 @@ body::after {
 
 .vlg-menu__image {
   position: absolute;
-  right: -50px;
-  bottom: 500px;
+  right: -120px;
+  bottom: 490px;
 }
 
 .vlg-menu .container {
@@ -1909,6 +1917,7 @@ body::after {
 
 .vlg-gallery__slide {
   width: auto;
+  margin: 0 auto;
 }
 
 .vlg-gallery__body {
@@ -3331,7 +3340,7 @@ body::after {
 
   .vlg-menu__image {
     max-width: 350px;
-    bottom: 1150px;
+    bottom: 1120px;
   }
 
   .vlg-menu__image img {
@@ -3440,7 +3449,6 @@ body::after {
 
   .vlg-hero__image {
     aspect-ratio: 182/197;
-    height: auto;
   }
 
   .vlg-info {
@@ -3518,7 +3526,7 @@ body::after {
 
   .vlg-menu__image {
     max-width: 300px;
-    bottom: 1270px;
+    bottom: 1110px;
   }
 
   .vlg-gallery__body {
@@ -3769,6 +3777,16 @@ body::after {
     max-width: 16px;
   }
 
+  .vlg-hero__item:nth-child(1) .vlg-hero__top,
+  .vlg-hero__item:nth-child(3) .vlg-hero__top {
+    border-right: 1px solid #c0342b;
+  }
+
+  .vlg-hero__item:nth-child(2) .vlg-hero__top,
+  .vlg-hero__item:nth-child(4) .vlg-hero__top {
+    border-left: 1px solid #c0342b;
+  }
+
   .vlg-hero__top {
     min-height: 60px;
   }
@@ -3891,7 +3909,7 @@ body::after {
   }
 
   .vlg-menu__label span {
-    padding-top: 4px;
+    padding-bottom: 2px;
   }
 
   .vlg-menu__icon {
@@ -3900,7 +3918,7 @@ body::after {
         -ms-transform: rotate(210deg);
             transform: rotate(210deg);
     left: 95px;
-    top: 65px;
+    top: 50px;
   }
 
   .vlg-menu__box {
@@ -3983,7 +4001,7 @@ body::after {
 
   .vlg-menu__text span {
     background-color: #000;
-    padding: 1px 10px 10px 10px;
+    padding: 0 10px 3px 10px;
     display: inline-block;
   }
 
@@ -3995,12 +4013,13 @@ body::after {
   .vlg-menu__text span:last-child {
     color: #c0342b;
     border-radius: 0 0 15px 0;
+    padding-bottom: 6px;
   }
 
   .vlg-menu__image {
     max-width: 247px;
     right: -110px;
-    bottom: 900px;
+    bottom: 890px;
   }
 
   .vlg-gallery {
@@ -4162,6 +4181,7 @@ body::after {
   .vlg-concept__sub-title {
     font-size: 23px;
     margin-bottom: 14px;
+    line-height: 73%;
   }
 
   .vlg-concept__body {
@@ -4179,6 +4199,9 @@ body::after {
     display: grid;
     gap: 40px;
     text-transform: lowercase;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .vlg-concept__text p:first-child {
@@ -4190,7 +4213,7 @@ body::after {
     display: inline-block;
     background-color: #000;
     border-radius: 10px;
-    padding: 0 5px 0 5px;
+    padding: 0 5px 3px 5px;
   }
 
   .vlg-concept__item {
