@@ -383,9 +383,7 @@
                 offset: idx * DELAY
             };
         });
-        let running = true;
         let startTime = performance.now() + START_DELAY - INTERVAL;
-        let pauseStart = 0;
         let rafId = null;
         const updateOnce = now => {
             blocks.forEach(({imgs, offset}) => {
@@ -396,36 +394,26 @@
             });
         };
         const loop = now => {
-            if (running) {
-                updateOnce(now);
-                rafId = requestAnimationFrame(loop);
-            }
+            updateOnce(now);
+            rafId = requestAnimationFrame(loop);
         };
         setTimeout(() => {
             updateOnce(performance.now());
             rafId = requestAnimationFrame(loop);
         }, START_DELAY);
         setTimeout(() => {
-            blocks.forEach(({imgs}) => {
-                imgs.forEach(img => {
-                    img.style.transition = "opacity 1s ease";
-                });
-            });
-        }, 200);
-        hero.addEventListener("mouseenter", () => {
-            if (!running) return;
-            running = false;
-            pauseStart = performance.now();
-            cancelAnimationFrame(rafId);
-        });
-        hero.addEventListener("mouseleave", () => {
-            if (running) return;
-            startTime += performance.now() - pauseStart;
-            running = true;
-            rafId = requestAnimationFrame(loop);
-        });
+            blocks.forEach(({imgs}) => imgs.forEach(img => void img.offsetWidth));
+            blocks.forEach(({imgs}) => imgs.forEach(img => img.style.transition = "opacity 1s ease"));
+        }, 300);
         document.addEventListener("visibilitychange", () => {
-            if (document.visibilityState === "visible") updateOnce(performance.now());
+            if (document.visibilityState === "visible") {
+                blocks.forEach(({imgs}) => imgs.forEach(img => img.style.transition = "none"));
+                updateOnce(performance.now());
+                blocks.forEach(({imgs}) => imgs.forEach(img => void img.offsetWidth));
+                setTimeout(() => {
+                    blocks.forEach(({imgs}) => imgs.forEach(img => img.style.transition = "opacity 1s ease"));
+                }, 50);
+            }
         });
     }
     const track = document.querySelector(".vlg-marquee__track");
@@ -743,6 +731,11 @@
             if (this.youTubeCode) if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = "";
             this.previousOpen.element.classList.remove(this.options.classes.popupActive);
             this.previousOpen.element.setAttribute("aria-hidden", "true");
+            const videos = this.previousOpen.element.querySelectorAll("video");
+            if (videos.length) videos.forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+            });
             if (!this._reopen) {
                 document.documentElement.classList.remove(this.options.classes.bodyActive);
                 !this.bodyLock ? bodyUnlock() : null;

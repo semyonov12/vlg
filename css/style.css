@@ -86,14 +86,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: Zhizn;
-  font-display: swap;
-  src: url("../fonts/Zhizn.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
 .container {
   width: 100%;
   padding-right: 25px;
@@ -1709,7 +1701,7 @@ body::after {
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 118px;
-  margin-bottom: 240px;
+  margin-bottom: 450px;
 }
 
 .vlg-menu__button {
@@ -1789,36 +1781,6 @@ body::after {
 
 .vlg-menu__icon img {
   max-width: 100%;
-}
-
-.vlg-menu__box {
-  margin-bottom: 180px;
-  position: relative;
-  max-width: 880px;
-}
-
-.vlg-menu__heading {
-  font-family: "Zhizn",sans-serif;
-  font-size: 47px;
-  text-transform: uppercase;
-  text-align: center;
-  color: #fff;
-  position: relative;
-  z-index: 2;
-}
-
-.vlg-menu__arrow1 {
-  position: absolute;
-  bottom: -300px;
-  left: -50px;
-}
-
-.vlg-menu__arrow2 {
-  position: absolute;
-  bottom: -260px;
-  right: -20px;
-  -webkit-transform: rotateY(-180deg) rotateZ(20deg);
-          transform: rotateY(-180deg) rotateZ(20deg);
 }
 
 .vlg-menu__bottom {
@@ -2542,6 +2504,7 @@ body::after {
   display: -ms-grid;
   display: grid;
   gap: 3px;
+  justify-items: start;
 }
 
 .item-reviews__name {
@@ -2549,6 +2512,9 @@ body::after {
   font-size: 24px;
   line-height: 1;
   color: #333;
+  display: inline-block;
+  -webkit-transition: color .3s;
+  transition: color .3s;
 }
 
 .item-reviews__post {
@@ -2906,7 +2872,7 @@ body::after {
   transition: transform .3s ease 0s;
   transition: transform .3s ease 0s, -webkit-transform .3s ease 0s;
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
 }
 
 .lock .popup__content {
@@ -2958,7 +2924,7 @@ body::after {
 
 .popup__video {
   position: relative;
-  aspect-ratio: 5/3;
+  aspect-ratio: 576/800;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -3165,11 +3131,14 @@ body::after {
 }
 
 [data-showmore-content] {
+  display: block;
   font-family: "Arial",sans-serif;
   font-size: 20px;
   line-height: 115%;
   color: #333;
   --showmore-height: 140;
+  -webkit-transition: color .3s;
+  transition: color .3s;
 }
 
 [data-showmore-button] {
@@ -3177,6 +3146,8 @@ body::after {
   font-size: 20px;
   line-height: 115%;
   color: #a9a8a8;
+  -webkit-transition: color .3s;
+  transition: color .3s;
 }
 
 [data-showmore-button] span:last-child {
@@ -3212,6 +3183,18 @@ body::after {
 @media (min-width: 1200px) {
   .container {
     max-width: 1340px;
+  }
+}
+
+@media (min-width: 2100px) {
+  .vlg-menu__row {
+    margin-bottom: 700px;
+  }
+}
+
+@media (min-width: 2700px) {
+  .vlg-menu__row {
+    margin-bottom: 1000px;
   }
 }
 
@@ -3287,6 +3270,14 @@ body::after {
             flex: 0 0 15px;
   }
 
+  .vlg-menu::before {
+    height: 80%;
+  }
+
+  .vlg-menu__background {
+    bottom: 120px;
+  }
+
   .vlg-menu__body {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3323,11 +3314,13 @@ body::after {
         -ms-flex-align: end;
             align-items: flex-end;
     gap: 60px;
+    margin-bottom: 390px;
   }
 
   .vlg-menu__button {
     -ms-flex-preferred-size: auto;
         flex-basis: auto;
+    min-height: 100px;
   }
 
   .vlg-menu__icon {
@@ -3851,12 +3844,8 @@ body::after {
     padding-top: 20px;
   }
 
-  .vlg-menu::before {
-    height: 80%;
-  }
-
   .vlg-menu__background {
-    bottom: 210px;
+    bottom: 170px;
   }
 
   .vlg-menu__desc {
@@ -3919,37 +3908,6 @@ body::after {
             transform: rotate(210deg);
     left: 95px;
     top: 50px;
-  }
-
-  .vlg-menu__box {
-    margin-bottom: 120px;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .vlg-menu__heading {
-    font-size: 22px;
-  }
-
-  .vlg-menu__arrow1 {
-    max-width: 140px;
-    bottom: -160px;
-    left: -20px;
-  }
-
-  .vlg-menu__arrow1 img {
-    max-width: 100%;
-  }
-
-  .vlg-menu__arrow2 {
-    max-width: 90px;
-    bottom: -120px;
-    right: 0px;
-  }
-
-  .vlg-menu__arrow2 img {
-    max-width: 100%;
   }
 
   .vlg-menu__wrap {
@@ -4571,6 +4529,10 @@ body::after {
     color: #000;
   }
 
+  .item-reviews__name:hover {
+    color: #000;
+  }
+
   .fixed-form__link:hover {
     background-color: #000;
     color: #fff;
@@ -4603,5 +4565,13 @@ body::after {
 
   .tabs__title:hover {
     opacity: 1;
+  }
+
+  [data-showmore-content]:hover {
+    color: #000;
+  }
+
+  [data-showmore-button]:hover {
+    color: #000;
   }
 }
