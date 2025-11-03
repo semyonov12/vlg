@@ -78,14 +78,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: YandexSansText;
-  font-display: swap;
-  src: url("../fonts/YandexSansText-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-}
-
 .container {
   width: 100%;
   padding-right: 25px;
@@ -1819,9 +1811,9 @@ body::after {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
-  font-family: "YandexSansText",sans-serif;
+  font-family: "ProximaNova",sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 21px;
   line-height: 97%;
   text-align: center;
   color: #f43;
@@ -3923,7 +3915,7 @@ body::after {
 
   .vlg-menu__map {
     min-height: 38px;
-    font-size: 14px;
+    font-size: 15px;
     gap: 7px;
     max-width: 144px;
     border-radius: 10px;
