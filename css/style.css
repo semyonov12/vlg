@@ -3027,40 +3027,6 @@ body::after {
   padding: 8px 18px;
 }
 
-.spollers__buttons {
-  display: -ms-grid;
-  display: grid;
-  gap: 5px;
-}
-
-.spollers__button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 16px;
-  border: 1px solid #fff;
-  width: 100%;
-  padding: 3px 10px;
-  border-radius: 10px;
-  font-weight: 500;
-  font-size: 17px;
-  line-height: 157%;
-  color: #fff;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-}
-
-.spollers__button.active {
-  background-color: #fff;
-  color: #000;
-}
-
 .tabs__navigation {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3152,6 +3118,69 @@ body::after {
 
 ._showmore-active [data-showmore-button] span:last-child {
   display: block;
+}
+
+.options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 5px;
+}
+
+.options__item {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+}
+
+.options__input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+.options__input:checked+.options__label {
+  background-color: #fff;
+  color: #000;
+}
+
+.options__label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  position: relative;
+  gap: 0.625rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  border: 1px solid #fff;
+  width: 100%;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 157%;
+  color: #fff;
+  -webkit-transition: all .3s;
+  transition: all .3s;
 }
 
 @media (min-width: 576px) {
@@ -4551,10 +4580,6 @@ body::after {
     border-bottom: 1px solid #fff;
   }
 
-  .spollers__button:hover {
-    background-color: rgba(255,255,255,.2);
-  }
-
   .tabs__title:hover {
     opacity: 1;
   }
@@ -4565,5 +4590,9 @@ body::after {
 
   [data-showmore-button]:hover {
     color: #000;
+  }
+
+  .options__label:hover {
+    background-color: rgba(255,255,255,.2);
   }
 }

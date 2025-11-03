@@ -801,19 +801,20 @@
     const spollersItems = document.querySelectorAll(".spollers__item");
     if (spollersItems.length) spollersItems.forEach(item => {
         const valueEl = item.querySelector(".spollers__value");
-        const buttons = item.querySelectorAll(".spollers__button");
-        buttons.forEach(btn => {
-            btn.addEventListener("click", () => {
-                const text = btn.textContent.trim();
+        const radioInputs = item.querySelectorAll(".options__input");
+        radioInputs.forEach(input => {
+            input.addEventListener("change", () => {
+                const label = item.querySelector(`label[for="${input.id}"]`);
+                const text = label ? label.textContent.trim() : input.value;
                 valueEl.textContent = text;
-                buttons.forEach(b => b.classList.remove("active"));
-                btn.classList.add("active");
+                item.querySelectorAll(".options__label").forEach(l => l.classList.remove("active"));
+                label.classList.add("active");
                 const spollerTitle = item.querySelector("[data-spoller]._spoller-active");
                 if (spollerTitle) {
                     const spollersBlock = spollerTitle.closest("[data-spollers]");
                     const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
                     spollerTitle.classList.remove("_spoller-active");
-                    _slideUp(spollerTitle.nextElementSibling, spollerSpeed);
+                    if (typeof _slideUp === "function") _slideUp(spollerTitle.nextElementSibling, spollerSpeed);
                 }
             });
         });
