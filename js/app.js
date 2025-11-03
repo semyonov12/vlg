@@ -825,4 +825,21 @@
         });
         im.mask(inputs);
     }
+    const wrapper = document.getElementById("wrapper");
+    if (wrapper) {
+        const cloneTop = wrapper.cloneNode(true);
+        const cloneBottom = wrapper.cloneNode(true);
+        document.body.prepend(cloneTop);
+        document.body.append(cloneBottom);
+        function getContentHeight() {
+            return wrapper.scrollHeight;
+        }
+        const contentHeight = getContentHeight();
+        window.scrollTo(0, contentHeight);
+        window.addEventListener("scroll", () => {
+            const scrollY = window.scrollY;
+            const totalHeight = getContentHeight();
+            if (scrollY >= totalHeight * 2) window.scrollTo(0, scrollY - totalHeight); else if (scrollY <= 0) window.scrollTo(0, scrollY + totalHeight);
+        });
+    }
 })();
